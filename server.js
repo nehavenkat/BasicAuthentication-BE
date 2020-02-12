@@ -17,4 +17,4 @@ const server = express();
 server.use(cors());
 server.use(express.json());
 
-server.listen(process.env.PORT || 3000, () => console.log("I'm listing"));
+server.listen(process.env.PORT || 3000, () => console.log("server is running"));
