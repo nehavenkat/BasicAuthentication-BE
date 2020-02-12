@@ -1,6 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+// connectting the routes to server r1
+const authRouter = require("./src/routes/auth");
 
 //connecting to mongo
 
@@ -16,5 +18,7 @@ mongoose.connect(
 const server = express();
 server.use(cors());
 server.use(express.json());
+// IN POSTMAN http://localhost:3000/register
+server.use("/register", authRouter); //r2
 
 server.listen(process.env.PORT || 3000, () => console.log("server is running"));

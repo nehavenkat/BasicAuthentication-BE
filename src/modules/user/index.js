@@ -23,6 +23,6 @@ const UserSchema = new mongoose.Schema({
   //salt from passportlocalmongoose
   //you are free to add whatever field you have in mind for your document!!!
 });
-User.plugin(passportLocalMongoose);
+UserSchema.plugin(passportLocalMongoose);
 
 module.exports = mongoose.model("User", UserSchema);
