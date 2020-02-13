@@ -1,8 +1,10 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-// connectting the routes to server r1
+// connectting the (routes\auth)routes to server r1
 const authRouter = require("./src/routes/auth");
+//connecting the utils/auth to server a1
+const { authorise } = require("./src/utils");
 
 //connecting to mongo
 
@@ -18,7 +20,11 @@ mongoose.connect(
 const server = express();
 server.use(cors());
 server.use(express.json());
-// IN POSTMAN http://localhost:3000/register
+// IN POSTMAN http://localhost:3000/register/register
 server.use("/register", authRouter); //r2
+//
+server.get("/users", authorise, (req, res) => {
+  res.send("You are Authorised!"); //a2
+});
 
 server.listen(process.env.PORT || 3000, () => console.log("server is running"));
