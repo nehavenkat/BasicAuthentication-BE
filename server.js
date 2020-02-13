@@ -4,7 +4,7 @@ const cors = require("cors");
 // connectting the (routes\auth)routes to server r1
 const authRouter = require("./src/routes/auth");
 //connecting the utils/auth to server a1
-const { authorise } = require("./src/utils");
+const { authorize } = require("./src/utils");
 
 //connecting to mongo
 
@@ -23,8 +23,9 @@ server.use(express.json());
 // IN POSTMAN http://localhost:3000/register/register
 server.use("/register", authRouter); //r2
 //
-server.get("/users", authorise, (req, res) => {
+server.get("/users", authorize, (req, res) => {
   res.send("You are Authorised!"); //a2
-});
+}); // In POSTMAN http://localhost:3000/users
+//and type in the Authorization => username and password
 
 server.listen(process.env.PORT || 3000, () => console.log("server is running"));

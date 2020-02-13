@@ -5,6 +5,7 @@ const User = require("../modules/user"); // connecting to schema
 
 const checkCredentialsInMongo = async (username, password, next) => {
   const response = await User.authenticate()(username, password);
+  console.log(response);
   next(null, response.user);
 };
 
