@@ -26,6 +26,6 @@ server.use("/register", authRouter); //r2
 server.get("/users", authorize, (req, res) => {
   res.send("You are Authorised!"); //a2
 }); // In POSTMAN http://localhost:3000/users
-//and type in the Authorization => username and password
+//and type in the Authorization => username and password(If password is incorrect shows user unauthorised)
 
 server.listen(process.env.PORT || 3000, () => console.log("server is running"));
